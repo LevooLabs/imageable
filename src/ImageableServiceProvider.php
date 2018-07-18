@@ -16,6 +16,10 @@ class ImageableServiceProvider extends ServiceProvider
     {
         $this->loadMigrationsFrom(__DIR__.'/../migrations');
 
+        $this->publishes([
+            __DIR__.'/../resources/images/default.jpg' => public_path('images/defaults/default.jpg')
+        ]);
+
         AliasLoader::getInstance()->alias('Image', 'Intervention\Image\Facades\Image');
     }
 
