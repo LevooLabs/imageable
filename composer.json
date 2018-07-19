@@ -33,5 +33,7 @@
                 "LevooLabs\\Imageable\\ImageableServiceProvider"
             ]
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
