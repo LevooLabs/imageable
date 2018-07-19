@@ -20,10 +20,10 @@
     },
     "require": {
         "php": "^7.1.3",
-        "illuminate/database": ">= 5.0",
-        "illuminate/support": ">= 5.0",
-        "illuminate/http": ">= 5.0",
-        "illuminate/foundation": ">= 5.0",
+        "illuminate/database": "^5.4",
+        "illuminate/support": "^5.4",
+        "illuminate/http": "^5.4",
+        "illuminate/foundation": "^5.4",
         "intervention/image": "^2.3",
         "intervention/imagecache": "^2.3"
     },
