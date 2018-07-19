@@ -15,14 +15,15 @@ echo $topic->image->o; // Original image url
 ```
 
 ### Get secondary images
+
 ```php
-foreach($image in $product->secondary_images) {
-    echo $product->s;
+foreach ($product->secondary_images as $image) {
+    echo $image->s;
 }
 ```
 
-
 ### Check whenever a model has an uploaded image
+
 ```php
 if ($topic->has_image) {
     //
@@ -64,7 +65,7 @@ Run the Composer require command from the Terminal:
     
 ### Step 2: Migrations
 
-Run migrations with artisan command
+Run migrations with artisan command:
 
     php aritsan migrate
 
@@ -105,7 +106,7 @@ class Topic extends Model
 }
 ```
 
-Or you can set
+Or you can extend flexibility by setting these properties:
 
 ```php
 class Product extends Model
@@ -126,12 +127,12 @@ class Product extends Model
 ```
 
 - The `$template_base_name` contains the base name for the filters defined in the imagecache config file.
-- The `$image_type` and `$secondary_image_type` properties holds the value for image_type column in the images table. The `$secondary_image_type` will only be used in `MultiImageableTrait.
-- The `$default_image_name` is the name of the placeholder image file located in public/images/defaults folder for models without uploaded images.
+- The `$image_type` and `$secondary_image_type` properties hold the value for image_type column in the images table. The `$secondary_image_type` will only be used in `MultiImageableTrait`.
+- The `$default_image_name` is the name of the placeholder image file located in `public/images/imageable` folder for models without uploaded images.
 
 ### Step 4.2: Custom filters (optional)
 
-If you set the `$template_base_name` value in your model you have to define the filters for that template in the config/imagecache.php file.
+If you set the `$template_base_name` value in your model you have to define the filters for that template in the `config/imagecache.php` file.
 
 ```php
     'product'   => \App\ImageFilters\Product\Upload::class,
