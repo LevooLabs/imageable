@@ -16,9 +16,9 @@ echo $topic->image->o; // Original image url
 
 ### Get secondary images
 ```php
-    foreach($image in $product->secondary_images) {
-        echo $product->s;
-    }
+foreach($image in $product->secondary_images) {
+    echo $product->s;
+}
 ```
 
 
@@ -47,7 +47,7 @@ Or use `store_images($files, $image_type = null)` for  multiple images.
 ### Delete image from the server
 
 ```php
-    $topic->delete_image();
+$topic->delete_image();
 ```
 Or use `delete_images()` to delete all the images connected to the model.
 
@@ -67,6 +67,19 @@ Run the Composer require command from the Terminal:
 Run migrations with artisan command
 
     php aritsan migrate
+
+This will create the following table:
+
+```php
+Schema::create('images', function(Blueprint $table) {
+    $table->increments('id');
+    $table->integer('imageable_id')->unsigned();
+    $table->string('imageable_type');
+    $table->tinyInteger('image_type');
+    $table->string('image_path'); #NOTE relative filename with extension -> /folder/folder/filename.ext
+    $table->timestamps();
+});
+```
 
 ### Step 3: Publish assets
 
@@ -121,10 +134,10 @@ class Product extends Model
 If you set the `$template_base_name` value in your model you have to define the filters for that template in the config/imagecache.php file.
 
 ```php
-        'product'   => \App\ImageFilters\Product\Upload::class,
-        'product-s' => \App\ImageFilters\Product\Small::class,
-        'product-m' => \App\ImageFilters\Product\Medium::class,
-        'product-l' => \App\ImageFilters\Product\Large::class,
+    'product'   => \App\ImageFilters\Product\Upload::class,
+    'product-s' => \App\ImageFilters\Product\Small::class,
+    'product-m' => \App\ImageFilters\Product\Medium::class,
+    'product-l' => \App\ImageFilters\Product\Large::class,
 ```
 
 You can read more about Intervention Image Filters [here](http://image.intervention.io/use/filters).
