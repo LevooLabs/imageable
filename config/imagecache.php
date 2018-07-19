@@ -32,7 +32,7 @@ return array(
     
     'paths' => array(
         storage_path('app/uploads'),
-        public_path('images/defaults')
+        public_path('images/imageable')
     ),
 
     /*
