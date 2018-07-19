@@ -3,7 +3,6 @@
 namespace LevooLabs\Imageable;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Foundation\AliasLoader;
 
 class ImageableServiceProvider extends ServiceProvider
 {
@@ -19,8 +18,6 @@ class ImageableServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../resources/images/default.jpg' => public_path('images/imageable/default.jpg')
         ]);
-
-        AliasLoader::getInstance()->alias('Image', 'Intervention\Image\Facades\Image');
     }
 
     /**
@@ -31,7 +28,5 @@ class ImageableServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(__DIR__.'/../config/imagecache.php', 'imagecache');
-        
-        $this->app->register('Intervention\Image\ImageServiceProvider');
     }
 }
