@@ -4,7 +4,7 @@ namespace LevooLabs\Imageable\Traits;
 
 use Illuminate\Http\File;
 use Illuminate\Http\UploadedFile;
-use LevooLabs\Imageable\Enums\ImageType;
+use LevooLabs\Imageable\Constants\ImageType;
 use LevooLabs\Imageable\Models\Image as ImageModel;
 
 trait MultiImageableTrait {

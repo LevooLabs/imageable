@@ -76,7 +76,7 @@ Schema::create('images', function(Blueprint $table) {
     $table->increments('id');
     $table->integer('imageable_id')->unsigned();
     $table->string('imageable_type');
-    $table->tinyInteger('image_type');
+    $table->string('image_type');
     $table->string('image_path'); #NOTE relative filename with extension -> /folder/folder/filename.ext
     $table->timestamps();
 });
@@ -115,8 +115,8 @@ class Product extends Model
 
     public $template_base_name = "product";
     
-    protected $image_type = MyEnums\ImageType::PRODUCT_MAIN;
-    protected $secondary_image_type = MyEnums\ImageType::PRODUCT;
+    protected $image_type = MyConstants\ImageType::PRODUCT_MAIN;
+    protected $secondary_image_type = MyConstants\ImageType::PRODUCT;
 
     protected $default_image_name = "product.jpg";
     
