@@ -24,7 +24,8 @@
         "illuminate/support": "^5.4",
         "illuminate/http": "^5.4",
         "intervention/image": "^2.3",
-        "intervention/imagecache": "^2.3"
+        "intervention/imagecache": "^2.3",
+        "doctrine/dbal": "^2.9"
     },
     "extra": {
         "laravel": {

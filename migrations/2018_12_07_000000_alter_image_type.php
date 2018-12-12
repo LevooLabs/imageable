@@ -14,7 +14,7 @@ class AlterImageType extends Migration
     public function up()
     {
         Schema::table('images', function (Blueprint $table) {
-            $table->string('image_type');
+            $table->string('image_type')->change();
         });
     }
 
@@ -26,7 +26,7 @@ class AlterImageType extends Migration
     public function down()
     {
         Schema::table('images', function (Blueprint $table) {
-            $table->tinyInteger('image_type');
+            $table->tinyInteger('image_type')->change();
         });
     }
 }
