@@ -2,7 +2,10 @@
 
 namespace LevooLabs\Imageable;
 
+use LevooLabs\Imageable\ImageFilters\Basic;
+
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Config\Repository as Config;
 
 class ImageableServiceProvider extends ServiceProvider
 {
@@ -11,7 +14,7 @@ class ImageableServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(Config $config)
     {
         $this->loadMigrationsFrom(__DIR__.'/../migrations');
 
@@ -19,6 +22,17 @@ class ImageableServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__.'/../resources/images/default.jpg' => public_path('images/imageable/default.jpg')
             ]);
+        }
+
+        $config->push('imagecache.paths', storage_path('app/uploads'));
+        $config->push('imagecache.paths', public_path('images/imageable'));
+        
+        #NOTE default image filters
+        if (!$config->has('imagecache.templates.default')) {
+            $config->set('imagecache.templates.default', Basic\Upload::class);
+            $config->set('imagecache.templates.default-s', Basic\Small::class);
+            $config->set('imagecache.templates.default-m', Basic\Upload::class);
+            $config->set('imagecache.templates.default-l', Basic\Upload::class);
         }
     }
 
@@ -29,6 +43,6 @@ class ImageableServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/imagecache.php', 'imagecache');
+        //
     }
 }
