@@ -12,6 +12,12 @@ class Image extends Model
         'image_path', 'image_type', 'imageable'
     ];
 
+    protected $hidden = [
+        'image_path', 'image_type', 'imageable',
+    ];
+
+    protected $appends = ['s', 'm', 'l', 'o', ];
+
     public function imageable()
     {
         return $this->morphTo();
